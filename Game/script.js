@@ -15,6 +15,9 @@ const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
 const turn = document.getElementById('turnIndicator')
 const reset = document.getElementById('reset')
+const wins = document.getElementById('wins')
+const draws = document.getElementById('draws')
+const losses = document.getElementById('losses')
 const restartButton = document.getElementById('restartButton')
 const winningMessageElement = document.getElementById('winningMessage')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
@@ -58,7 +61,7 @@ function handleClick(e) {
     }
 }
 
-/* Add's  */
+/* Bring's up pop up */
 function endGame(draw) {
     if (draw ) {
         winningMessageTextElement.innerText = 'Draw!'
