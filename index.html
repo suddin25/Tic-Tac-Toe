@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+    <div class="container"> 
+        <h1 class="title"> Tic Tac Toe</h1>
+        <div class="status-options"> 
+            <div class="turn-indicator" id="turnIndicator">X's Turn</div> 
+            <div class="reset" id="reset">Reset</div>
+            <div class="play-with-ai" id="play-with-ai">AI Player</div>
+        </div>
+        <div class="board" id="board">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+        <div class="score">
+            <div class= "win">Wins: </div>
+            <div class= "tie">Draws: </div>
+            <div class= "loss">Losses: </div>
+        </div>
+        <div class="winning-message" id="winningMessage">
+            <div data-winning-message-text> </div>
+            <button id="restartButton">Restart</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+}
+
+body {
+    background-image: url(wallpaper.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-family: helvetica;
+    justify-content: center;
+    text-align: center;
+}
+
+.container {
+    align-self: center;
+    background: rgba(255, 255, 255, 0.13);
+    border-radius: 25px;
+    justify-self: center;
+    margin: 93px;
+    padding: 50px;
+}
+
+.title {
+    background-color: #248cc0;
+    border: 1px solid black;
+    padding: .10em .1em;
+    font: arial;
+    font-size: 2rem;
+}
+
+.status-options,
+.score {
+    background-color: #248cc0;
+    border: 1px solid black;
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-around;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.reset,
+.play-with-ai {
+    cursor: pointer; 
+}
+
+.reset:hover,
+.play-with-ai:hover {
+    color: grey;
+}
+
+.board {
+    align-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px;
+    justify-content: center;
+    justify-items: center;
+    overflow: hidden;
+}
+
+.cell {
+    align-items: center;
+    background:white;
+    border: 1px solid black;
+    cursor: pointer;
+    display: flex;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    justify-content: center;
+    position: relative;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+    border-left: none;
+}
+
+.cell:nth-child(3n + 3) {   
+    border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8) {
+    border-bottom: none;
+}
+
+/* Changing cursor indicator */
+.cell.x,
+.cell.circle {
+    cursor: not-allowed;
+}
+
+/* Setting the base color of X's and O's to Black */
+.cell.x::before,
+.cell.x::after,
+.cell.circle::before {
+    background-color:#248cc0;
+}
+
+/* Hover display */
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+    background-color: grey;
+}
+
+/* Setting up the two Rectangles of the X's */
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+}
+
+/* (1) Formatting the Rectangles into X's */
+.cell.x::before,
+.board.x .cell:hover::before {
+    transform: rotate(45deg);
+}
+
+/* (2) Formatting the Rectangles into X's */
+.cell.x::after,
+.board.x .cell:hover::after {
+    transform: rotate(-45deg);
+}
+
+/* Setting up Circles*/
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* First Circle in Black */
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+}
+
+/* Second Circle inside first Circle in White */
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: white;
+}
+
+.winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+}
+
+.winning-message button {
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .10em .1em;
+    cursor: pointer;
+}
+
+.winning-message button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.winning-message.show {
+    display: flex;
+}
+
+
+
+
