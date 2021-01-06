@@ -21,7 +21,9 @@ const losses = document.getElementById('losses')
 const restartButton = document.getElementById('restartButton')
 const winningMessageElement = document.getElementById('winningMessage')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
+let counterW = 0 , counterD = 0, counterL = 0
 let circleTurn
+
 
 // https://wallpapercave.com/w/wp2913772
 
@@ -41,7 +43,6 @@ function startGame() {
         cell.removeEventListener('click', handleClick)
         cell.addEventListener('click', handleClick, {once: true})
     })
-    reset.removeEventListener('click', startGame)
     setBoardHoverClass()
     winningMessageElement.classList.remove('show')
 }
@@ -63,11 +64,19 @@ function handleClick(e) {
 
 /* Bring's up pop up */
 function endGame(draw) {
-    if (draw ) {
+    if (draw) {
         winningMessageTextElement.innerText = 'Draw!'
+        counterD++
+        draws.innerHTML = "Draws: " + counterD
     } else {
-        winningMessageTextElement.innerText = `${circleTurn ? "O's" :
-         "X's"}  Wins!`
+        winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Wins!`
+        if (circleTurn) {
+            counterL++
+            losses.innerHTML = "Losses: " + counterL
+        } else {
+            counterW++
+            wins.innerHTML = "Wins: " + counterW
+        }
     }
     winningMessageElement.classList.add('show')
 }
@@ -88,6 +97,7 @@ function placeMark(cell, currentClass) {
 /* Switch turn */
 function swapTurns() {
     circleTurn = !circleTurn;
+    turn.innerHTML = `${circleTurn ? "O's" : "X's"} Turn`
 }
 
 /* Switches board based on who's turn is next */
