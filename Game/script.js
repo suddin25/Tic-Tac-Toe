@@ -24,7 +24,7 @@ const winningMessageTextElement = document.querySelector('[data-winning-message-
 let counterW = 0 , counterD = 0, counterL = 0
 let circleTurn
 
-
+// <div class="play-with-ai" id="play-with-ai">AI Player</div>
 // https://wallpapercave.com/w/wp2913772
 
 /* Reset's game */
